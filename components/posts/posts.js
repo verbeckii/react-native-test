@@ -23,20 +23,12 @@ const PostDetails = styled.View`
   justify-content: center;
 `;
 
-const truncateTitle = (str) => {
-  if (str.length >= 75) {
-    return str.substring(0, 75) + "...";
-  }
-
-  return str;
-};
-
 export default function Posts({ title, body }) {
   return (
     <PostView>
       <PostDetails>
         <PostTitle>Title: {title}</PostTitle>
-        <PostBody>Body: {truncateTitle(body)}</PostBody>
+        <PostBody numberOfLines={2}>Body: {body}</PostBody>
       </PostDetails>
     </PostView>
   );
