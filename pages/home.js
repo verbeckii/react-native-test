@@ -3,28 +3,37 @@ import {
   FlatList,
   View,
   ActivityIndicator,
-  TouchableOpacity
+  TouchableOpacity,
+  Button
 } from 'react-native';
 import Post from '../components/posts/posts';
-import { useGetPostsQuery } from "../services/postsApi";
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import LeftAction from '../components/left-action/left-action';
 import RightAction from '../components/right-action/right-action';
+import { fetchUsers, selectAllPosts } from '../services/postsSlicer';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+
 
 export default function Posts() {
-    const { data, error, isLoading } = useGetPostsQuery()
+    const dispatch = useDispatch();
+    const { loading } = useSelector((state) => state.posts)
+    const posts = useSelector(selectAllPosts);
 
+    
+    useEffect(() => {
+        dispatch(fetchUsers());
+    }, []);
 
-
-    if (isLoading) return <ActivityIndicator/>
+    if (loading) return <ActivityIndicator/>
 
     return (
 
 
         <View>
             <FlatList
-                data={data}
-                extraData={data}
+                data={posts}
+                extraData={posts}
                 renderItem={({item}) => (
                     <Swipeable 
                         renderLeftActions={LeftAction}

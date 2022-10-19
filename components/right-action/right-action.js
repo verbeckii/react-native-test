@@ -1,4 +1,6 @@
 import { StyleSheet, Text, View, TouchableOpacity, Alert } from "react-native";
+import { useDispatch } from "react-redux";
+import { deletePost } from '../../services/postsSlicer';
 
 const styles = StyleSheet.create({
     rightAction: {
@@ -10,20 +12,20 @@ const styles = StyleSheet.create({
 
 
 export default RightAction = ({id}) => {
+    const dispatch = useDispatch();
 
     const onPressDelete = () =>
         Alert.alert(
             "Delete Post",
-            "Are you sure want to delete this post?",
+            `Are you sure want to delete post: ${id}`,
         [
             {
                 text: "Cancel",
-                onPress: () => console.log(`Cancel Pressed: ${id}`) ,
                 style: "cancel"
             },
             { 
                 text: "Delete", 
-                onPress: () => deletePost({id})
+                onPress: () => dispatch(deletePost(id))
             }
         ]
     );

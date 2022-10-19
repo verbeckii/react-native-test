@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import { Text } from 'react-native';
 
 const PostView = styled.View`
   flex-direction: row;
@@ -8,27 +9,17 @@ const PostView = styled.View`
   border-bottom-style: solid;
 `;
 
-const PostTitle = styled.Text`
-  font-size: 16px;
-  font-weight: 400;
-`;
-
-const PostBody = styled.Text`
-  font-size: 16px;
-  font-weight: 400;
-`;
-
 const PostDetails = styled.View`
   flex: 1;
   justify-content: center;
 `;
 
-export default function Posts({ title, body }) {
+export default function Post({ title, body }) {
   return (
     <PostView>
       <PostDetails>
-        <PostTitle>Title: {title}</PostTitle>
-        <PostBody numberOfLines={2}>Body: {body}</PostBody>
+        <Text>Title: {title}</Text>
+        <Text numberOfLines={2}>Body: {body}</Text>
       </PostDetails>
     </PostView>
   );
