@@ -1,7 +1,8 @@
 import { StyleSheet, Text, View } from "react-native";
 
 const styles = StyleSheet.create({
-    leftAction: {
+      leftAction: {
+      flex: 1,
       backgroundColor: '#388e3c',
       justifyContent: 'center',
     },

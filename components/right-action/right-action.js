@@ -4,6 +4,7 @@ import { deletePost } from '../../services/postsSlicer';
 
 const styles = StyleSheet.create({
     rightAction: {
+    flex: 1,
       backgroundColor: '#FF0000',
       justifyContent: 'center',
       alignItems: 'flex-end'
