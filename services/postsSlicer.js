@@ -5,7 +5,7 @@ import {
   } from '@reduxjs/toolkit';
   
  
-  export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
+  export const fetchPosts = createAsyncThunk('users/fetchPosts', async () => {
     const response = await fetch('https://jsonplaceholder.typicode.com/posts');
     return (await response.json());
   });
@@ -22,14 +22,14 @@ import {
         deletePost: postsAdapter.removeOne,
     },
     extraReducers: (builder) => {
-      builder.addCase(fetchUsers.pending, (state) => {
+      builder.addCase(fetchPosts.pending, (state) => {
         state.loading = true;
       });
-      builder.addCase(fetchUsers.fulfilled, (state, action) => {
+      builder.addCase(fetchPosts.fulfilled, (state, action) => {
         postsAdapter.setAll(state, action.payload);
         state.loading = false;
       });
-      builder.addCase(fetchUsers.rejected, (state) => {
+      builder.addCase(fetchPosts.rejected, (state) => {
         state.loading = false;
       });
     }

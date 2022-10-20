@@ -32,6 +32,7 @@ export default function NewComment({ postId }) {
       />
       <View style={styles.button}>
         <Button
+          disabled={!name || !email || !body}
           title="Post comment"
           onPress={() => dispatch(addComment({ postId, id: 22, name, email, body }))}
         />

@@ -30,6 +30,7 @@ export default function PostsScreen({ route }) {
         <FlatList
           data={comments}
           extraData={comments}
+          keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
             <Comment name={item.name} body={item.body}/>
           )}

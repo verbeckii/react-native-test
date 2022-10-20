@@ -1,5 +1,5 @@
 import styled from "styled-components/native";
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
 
 const PostView = styled.View`
   flex-direction: row;

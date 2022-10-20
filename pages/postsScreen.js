@@ -8,7 +8,7 @@ import Post from "../components/post/post";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 import LeftAction from "../components/left-action/left-action";
 import RightAction from "../components/right-action/right-action";
-import { fetchUsers, selectAllPosts } from "../services/postsSlicer";
+import { fetchPosts, selectAllPosts } from "../services/postsSlicer";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
@@ -19,7 +19,7 @@ export default function PostsScreen({ navigation }) {
   const posts = useSelector(selectAllPosts);
 
   useEffect(() => {
-    dispatch(fetchUsers()); 
+    dispatch(fetchPosts()); 
   }, []);
 
   if (loading) return <ActivityIndicator />;
@@ -29,6 +29,7 @@ export default function PostsScreen({ navigation }) {
       <FlatList
         data={posts}
         extraData={posts}
+        keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <GestureHandlerRootView>
             <Swipeable
