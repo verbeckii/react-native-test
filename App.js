@@ -1,16 +1,14 @@
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
-import Home from './pages/home'
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { StatusBar, Text } from 'react-native';
+import { StatusBar } from 'react-native';
+import { Navigation } from './pages/navigation';
+
 
 export default function App() {
   return (
     <Provider store={store}>
       <StatusBar barStyle="auto" />
-        <GestureHandlerRootView>
-          <Home/>
-        </GestureHandlerRootView>
+        <Navigation/>
     </Provider>
   );
 }

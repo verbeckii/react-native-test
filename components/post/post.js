@@ -1,5 +1,5 @@
 import styled from "styled-components/native";
-import { Text } from 'react-native';
+import { Text, TouchableHighlight } from 'react-native';
 
 const PostView = styled.View`
   flex-direction: row;
@@ -17,10 +17,11 @@ const PostDetails = styled.View`
 export default function Post({ title, body }) {
   return (
     <PostView>
-      <PostDetails>
-        <Text>Title: {title}</Text>
-        <Text numberOfLines={2}>Body: {body}</Text>
-      </PostDetails>
+
+        <PostDetails>
+          <Text>Title: {title}</Text>
+          <Text numberOfLines={2}>Body: {body}</Text>
+        </PostDetails>
     </PostView>
   );
 }
