@@ -1,26 +1,22 @@
-import styled from "styled-components/native";
-import { Text } from "react-native";
-
-const PostView = styled.View`
-  flex-direction: row;
-  padding: 15px;
-  border-bottom-width: 1px;
-  border-bottom-color: rgba(0, 0, 0, 0.1);
-  border-bottom-style: solid;
-`;
-
-const PostDetails = styled.View`
-  flex: 1;
-  justify-content: center;
-`;
+import { StyleSheet, Text, View } from "react-native";
 
 export default function Post({ title, body }) {
   return (
-    <PostView>
-      <PostDetails>
+    <View style={styles.container}>
+      <View>
         <Text>Title: {title}</Text>
         <Text numberOfLines={2}>Body: {body}</Text>
-      </PostDetails>
-    </PostView>
+      </View>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    padding: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(0, 0, 0, 0.1)',
+    borderBottomStyle: 'solid',
+  },
+});

@@ -1,16 +1,18 @@
-import { Button, StyleSheet, TextInput, View } from "react-native";
+import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addComment } from "../../services/commentsSlicer";
+import { useDispatch, useSelector } from "react-redux";
+import { addComment, selectAllComments } from "../../services/commentsSlicer";
 
 export default function NewComment({ postId }) {
   const dispatch = useDispatch();
   const [name, onChangeName] = useState(null);
   const [email, onChangeEmail] = useState(null);
   const [body, onChangeBody] = useState(null);
+  let id = 1000;
 
   return (
-    <View>
+    <View style={styles.container}>
+      <Text>Add your comment:</Text>
       <TextInput
         style={styles.input}
         onChangeText={onChangeName}
@@ -34,7 +36,7 @@ export default function NewComment({ postId }) {
         <Button
           disabled={!name || !email || !body}
           title="Post comment"
-          onPress={() => dispatch(addComment({ postId, id: 22, name, email, body }))}
+          onPress={() => dispatch(addComment({ postId, id: id++, name, email, body }))}
         />
       </View>
     </View>
@@ -42,6 +44,12 @@ export default function NewComment({ postId }) {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    padding: 5,
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(0, 0, 0, 0.1)',
+    borderBottomStyle: 'solid',
+  },
   input: {
     height: 40,
     margin: 12,

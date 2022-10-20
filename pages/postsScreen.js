@@ -37,9 +37,10 @@ export default function PostsScreen({ navigation }) {
               renderRightActions={() => <RightAction id={item.id} />}
             >
               <TouchableHighlight
+                underlayColor='#faebd7'
                 onPress={() =>
                   navigation.navigate("PostDetails", {
-                    id: item.id,
+                    postId: item.id,
                     title: item.title,
                     body: item.body,
                   })

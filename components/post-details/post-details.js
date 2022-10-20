@@ -1,11 +1,11 @@
 import { StyleSheet, Text, View } from "react-native";
 
-export default function Comment({ name, body }) {
+export default function PostDetails({ title, body }) {
   return (
     <View style={styles.container}>
       <View>
-        <Text>User Name: {name}</Text>
-        <Text>Comment: {body}</Text>
+        <Text>Title: {title}</Text>
+        <Text>Body: {body}</Text>
       </View>
     </View>
   );

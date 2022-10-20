@@ -1,4 +1,4 @@
-import { ActivityIndicator, FlatList, Text, View } from "react-native";
+import { ActivityIndicator, FlatList, StyleSheet, View } from "react-native";
 import {
   fetchCommentsByPostId,
   selectAllComments,
@@ -7,23 +7,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import Comment from "../components/comment/comment";
 import NewComment from "../components/new-comment/new-comment";
+import PostDetails from "../components/post-details/post-details";
 
 export default function PostsScreen({ route }) {
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.comments);
   const comments = useSelector(selectAllComments);
   comments.sort((a, b) => parseFloat(b.id) - parseFloat(a.id));
-  const { id, title, body } = route.params;
+  const { postId, title, body } = route.params;
 
   useEffect(() => {
-    dispatch(fetchCommentsByPostId(id));
+    dispatch(fetchCommentsByPostId(postId));
   }, []);
 
   return (
     <View>
-      <Text>Title: {title}</Text>
-      <Text>Body: {body}</Text>
-      <NewComment postId={id}/>
+      <PostDetails title={title} body={body}/>
+      <NewComment postId={postId}/>
       {loading ? (
         <ActivityIndicator />
       ) : (
@@ -39,3 +39,11 @@ export default function PostsScreen({ route }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  postDetailsInfo: {
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(0, 0, 0, 0.1)',
+    borderBottomStyle: 'solid',
+  },
+});
